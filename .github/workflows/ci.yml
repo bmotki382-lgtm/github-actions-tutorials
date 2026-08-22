@@ -1,0 +1,11 @@
+on:
+ push:
+
+jobs:
+  build:
+   runs-on: ubuntu-latest
+   steps:
+    - name: buildstep1
+      run: echo "Building the project..."
+    - name: buildstep2
+      run: echo "Running tests..."
