@@ -1,7 +1,6 @@
 on:
  workflow_dispatch:
  #push:
- #abc
  pull_request:
    branches:
      - main
