@@ -1,29 +1,15 @@
-name: CI Workflow
-
+name: Deployment Workflow
 on:
  workflow_dispatch:
- #push:
- #abc
- pull_request:
+ pullrequest:
    branches:
      - main
 
+Lint:
+  runs-on: echo "Running lint checks..."
 
-jobs:
-  build:
-   runs-on: ubuntu-latest
-   steps:
-    - name: buildstep1
-      run: echo "Setting up the build environment..."
-    - name: buildstep2
-      run: echo "Running tests..."
-    - name: buildstep3
-      run: echo "Building the project..."
-  test:
-   runs-on: ubuntu-latest
-   needs: build
-   steps:
-    - name: teststep1
-      run: echo "Testing the project..."
-    - name: teststep2
-      run: echo "Generating test reports..."
+Test:
+  runs-on: echo "Running tests..."
+
+Security:
+  runs-on: echo "Running security checks..."
