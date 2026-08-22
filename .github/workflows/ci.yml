@@ -2,14 +2,17 @@ on:
  workflow_dispatch:
  push:
 
+
 jobs:
   build:
    runs-on: ubuntu-latest
    steps:
     - name: buildstep1
-      run: exit 1
+      run: echo "Setting up the build environment..."
     - name: buildstep2
       run: echo "Running tests..."
+    - name: buildstep3
+      run: echo "Building the project..."
   test:
    runs-on: ubuntu-latest
    needs: build
