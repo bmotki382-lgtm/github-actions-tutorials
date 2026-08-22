@@ -9,3 +9,10 @@ jobs:
       run: echo "Building the project..."
     - name: buildstep2
       run: echo "Running tests..."
+  test:
+   runs-on: ubuntu-latest
+   steps:
+    - name: teststep1
+      run: echo "Testing the project..."
+    - name: teststep2
+      run: echo "Generating test reports..."
