@@ -1,8 +1,7 @@
-on:
- workflow_dispatch:
- #push:
- #abc
- pull_request:
+on: #event triggers for the workflow
+ workflow_dispatch: #allows manual triggering of the workflow
+ #push: #on push events to the main branch
+ pull_request: #on pull request events to the main branch
    branches:
      - main
 
