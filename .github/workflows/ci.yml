@@ -6,15 +6,14 @@ on:
       APP_NAME:
         description: 'Application Name'
         required: true
-        default: 'my-app'
       DEPLOY_ENV:
         description: 'Deployment Environment'
         required: true
-        default: 'staging'
       choice:
         description: 'Choose an option'
         required: true
         default: 'option1'
+        type: choice
         options:
           - option1
           - option2
