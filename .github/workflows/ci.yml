@@ -6,11 +6,15 @@ on:
     branches:
       - main
 
+env:
+  DEPLOY_ENV: production
+  APP_NAME: Starship
+
 jobs:
   Lint:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Running lint checks..."
+      - run: echo "Perform linting for application $APP_NAME in $DEPLOY_ENV environment..."
 
   Test:
     runs-on: ubuntu-latest
