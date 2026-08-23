@@ -18,23 +18,23 @@ on:
        required: false
        type: boolean
 
-  jobs:
-    test:
-     if : github.event.inputs.environment == 'dev'
-     runs-on: ubuntu-latest
-     steps:
-       - echo "Running tests for dev environment"
+jobs:
+  test:
+    if : github.event.inputs.environment == 'dev'
+    runs-on: ubuntu-latest
+    steps:
+     - echo "Running tests for dev environment"
     
-    build:
-     if : github.event.inputs.environment == 'staging'
-     needs: test
-     runs-on: ubuntu-latest
-     steps:
-       - echo "Building for staging environment"
+  build:
+    if : github.event.inputs.environment == 'staging'
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - echo "Building for staging environment"
 
-    deploy:
-     if : github.event.inputs.environment == 'production' || github.event.inputs.deployment == true
-     needs: build
-     runs-on: ubuntu-latest
-     steps:
-       - echo "Deploying to production environment"   
+  deploy:
+    if : github.event.inputs.environment == 'production' || github.event.inputs.deployment == true
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+     - echo "Deploying to production environment"   
