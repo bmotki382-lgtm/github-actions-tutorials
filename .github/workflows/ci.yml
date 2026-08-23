@@ -2,12 +2,28 @@ name: Deployment Workflow
 
 on:
   workflow_dispatch:
+   inputs:
+      APP_NAME:
+        description: 'Application Name'
+        required: true
+        default: 'my-app'
+      DEPLOY_ENV:
+        description: 'Deployment Environment'
+        required: true
+        default: 'staging'
+      choice:
+        description: 'Choose an option'
+        required: true
+        default: 'option1'
+        options:
+          - option1
+          - option2
+          - option3
   pull_request:
     branches:
       - main
 
-env:
-  DEPLOY_ENV: production
+
 
 jobs:
   Lint:
