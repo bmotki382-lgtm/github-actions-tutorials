@@ -23,18 +23,24 @@ jobs:
     if : github.event.inputs.environment == 'dev'
     runs-on: ubuntu-latest
     steps:
-     - echo "Running tests for dev environment"
+     - name: Run tests
+       run: |
+         echo "Running tests for development environment"
     
   build:
     if : github.event.inputs.environment == 'staging'
     needs: test
     runs-on: ubuntu-latest
     steps:
-      - echo "Building for staging environment"
+     - name: Build project
+       run: |
+         echo "Building project for staging environment"
 
   deploy:
     if : github.event.inputs.environment == 'production' || github.event.inputs.deployment == true
     needs: build
     runs-on: ubuntu-latest
     steps:
-     - echo "Deploying to production environment"   
+     - name: deploy to production
+       run: |
+         echo "Deploying to production environment" 
