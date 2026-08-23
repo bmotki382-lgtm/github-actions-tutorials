@@ -17,6 +17,9 @@ on:
        description: 'Deployment type'
        required: false
        type: boolean
+#env:
+ # APP_NAME = employee-app
+  #APP_VERSION = 1.0
 
 jobs:
   test:
@@ -25,8 +28,7 @@ jobs:
     steps:
      - name: Run tests
        run: |
-         echo "Running tests for development environment"
-    
+         echo "Test passed"
   build:
     if : github.event.inputs.environment == 'staging'
     needs: test
@@ -34,13 +36,17 @@ jobs:
     steps:
      - name: Build project
        run: |
-         echo "Building project for staging environment"
-
+         echo "Building employee-app version ${{ env.APP_VERSION }}"
+         echo "Build successful"
   deploy:
     if : github.event.inputs.environment == 'production' || github.event.inputs.deployment == true
     needs: build
     runs-on: ubuntu-latest
     steps:
+     -name: secret
+      run: 
+       echo "Deploy token is ${{ secrets.DEPLOY_TOKEN }}"
      - name: deploy to production
        run: |
-         echo "Deploying to production environment" 
+         echo "Deploying employee-app to production"
+         echo "Deployment successful" 
