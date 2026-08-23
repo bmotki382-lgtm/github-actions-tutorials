@@ -40,7 +40,7 @@ jobs:
   
   production-deployment:
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.environment == 'production' }}
+    if: ${{ github.event.inputs.environment == 'production' }} || ${{ github.event.inputs.security_check == 'true' }}
     steps:
       - name: Deploy to Production Environment
         run: |
