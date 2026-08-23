@@ -18,7 +18,7 @@ jobs:
   Test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Running tests..."
+      - run: echo "Passoword for database is ${{ vars.DB_PASSWORD }}"
 
   Security:
     runs-on: ubuntu-latest
