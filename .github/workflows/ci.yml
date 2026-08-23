@@ -10,7 +10,6 @@ env:
   DEPLOY_ENV: production
 
 jobs:
-  runs-on: ubuntu-latest
   Lint:
     runs-on: ubuntu-latest
     steps:
