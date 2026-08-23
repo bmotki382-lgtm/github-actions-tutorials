@@ -3,8 +3,7 @@ on:
   push:
     branches: [ main ]
   workflow_dispatch: 
-  inputs:
-   environment:
+  environment:
     description: "CI workflow for building and testing the project"
     required: true
     type: choice
@@ -13,7 +12,7 @@ on:
       - "dev"
       - "staging"
       - "production"
-   Deployment:
+  Deployment:
     description: "Deployment check"  
     required: true
     default: "false"
