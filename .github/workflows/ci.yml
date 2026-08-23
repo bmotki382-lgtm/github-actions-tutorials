@@ -13,7 +13,7 @@ jobs:
   Lint:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Perform linting for application $APP_NAME in $DEPLOY_ENV environment..."
+      - run: echo "Perform linting for application ${{ vars.APP_NAME }} in ${{ env.DEPLOY_ENV }} environment..."
 
   Test:
     runs-on: ubuntu-latest
