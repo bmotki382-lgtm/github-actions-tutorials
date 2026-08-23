@@ -17,3 +17,24 @@ on:
        description: 'Deployment type'
        required: false
        type: boolean
+
+  Jobs:
+    test:
+     if : github.event.inputs.environment == 'dev'
+     runs-on: ubuntu-latest
+     steps:
+       - echo "Running tests for dev environment"
+    
+    build:
+     if : github.event.inputs.environment == 'staging'
+     needs: test
+     runs-on: ubuntu-latest
+     steps:
+       - echo "Building for staging environment"
+
+    deploy:
+     if : github.event.inputs.environment == 'production' || github.event.inputs.deployment == true
+     needs: build
+     runs-on: ubuntu-latest
+     steps:
+       - echo "Deploying to production environment"   
