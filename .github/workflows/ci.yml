@@ -10,6 +10,7 @@ env:
   DEPLOY_ENV: production
 
 jobs:
+  runs-on: ubuntu-latest
   Lint:
     runs-on: ubuntu-latest
     steps:
@@ -18,7 +19,7 @@ jobs:
   Test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Passoword for database is ${{ vars.DB_PASSWORD }}"
+      - run: echo "Passoword for database is ${{ secrets.DB_PASSWORD }}"
 
   Security:
     runs-on: ubuntu-latest
