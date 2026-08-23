@@ -43,10 +43,10 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-     -name: secret
-      run: 
-       echo "Deploy token is ${{ secrets.DEPLOY_TOKEN }}"
      - name: deploy to production
        run: |
          echo "Deploying employee-app to production"
          echo "Deployment successful" 
+     - name: secret
+       run:  
+         echo "Deploy token is ${{ secrets.DEPLOY_TOKEN }}"
