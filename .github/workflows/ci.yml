@@ -43,12 +43,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
      - name: deploy to production
-       if : github.event.inputs.environment == 'production' && github.event.inputs.deployment == true
+       if : github.event.inputs.environment == 'production' && github.event.inputs.deployment == 'true'
        run: |
          echo "Deploying employee-app to production"
          echo "Deployment successful" 
      - name: secret
-       if : github.event.inputs.environment == 'production' && github.event.inputs.deployment == true
+       if : github.event.inputs.environment == 'production' && github.event.inputs.deployment == 'true'
        run:  
          echo "Deploy token is ${{ secrets.DEPLOY_TOKEN }}"
      - name: deploy to staging
