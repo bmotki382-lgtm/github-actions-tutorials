@@ -23,14 +23,12 @@ on:
 
 jobs:
   test:
-    if : github.event.inputs.environment == 'dev'
     runs-on: ubuntu-latest
     steps:
      - name: Run tests
        run: |
          echo "Test passed"
   build:
-    if : github.event.inputs.environment == 'staging'
     needs: test
     runs-on: ubuntu-latest
     steps:
@@ -39,14 +37,26 @@ jobs:
          echo "Building employee-app version ${{ env.APP_VERSION }}"
          echo "Build successful"
   deploy:
-    if : github.event.inputs.environment == 'production' || github.event.inputs.deployment == true
+    
     needs: build
     runs-on: ubuntu-latest
     steps:
      - name: deploy to production
+       if : github.event.inputs.environment == 'production' && github.event.inputs.deployment == true
        run: |
          echo "Deploying employee-app to production"
          echo "Deployment successful" 
      - name: secret
+       if : github.event.inputs.environment == 'production' && github.event.inputs.deployment == true
        run:  
          echo "Deploy token is ${{ secrets.DEPLOY_TOKEN }}"
+     - name: deploy to staging
+       if : github.event.inputs.environment == 'staging' 
+       run: |
+         echo "Deploying employee-app to staging"
+         echo "Deployment successful"    
+     - name: deploy to dev
+       if : github.event.inputs.environment == 'dev' 
+       run: |
+         echo "Deploying employee-app to dev"
+         echo "Deployment successful"
