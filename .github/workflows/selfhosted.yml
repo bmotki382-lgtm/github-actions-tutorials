@@ -1,0 +1,26 @@
+name: selfhosted
+on: 
+ workflow_dispatch:
+
+jobs:
+  test: 
+   run-on: self-hosted
+   steps:
+    - name: Run tests
+      run: |
+        echo "Test passed"
+  build:
+    needs: test
+    runs-on: self-hosted
+    steps:
+     - name: Build project
+       run: |
+         echo "Building employee-app version ${{ env.APP_VERSION }}"
+         echo "Build successful"
+  deploy:
+    needs: [build , test]
+    runs-on: self-hosted
+    steps:
+     - name: deploy to production   
+        echo "Deploying employee-app to production"
+        echo "Deployment successful"
