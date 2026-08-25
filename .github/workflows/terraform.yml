@@ -16,7 +16,7 @@ jobs:
      - name: checkout code
        uses: actions/checkout@v4
      - name: setup terraform
-       uses: hashicorp/setup-terraform@v3
+       uses: hashicorp/setup-terraform@v5
      - name: Tf init
        run: terraform init
      - name: Tf validate the code
