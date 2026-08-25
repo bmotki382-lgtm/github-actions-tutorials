@@ -20,7 +20,7 @@ alb_egress_rules = [
 
 ami_id        = "ami-01a00762f46d584a1"
 instance_type = "t3.micro"
-key_name      = "Marutikey"
+key_name      = "Linux"
 
 lambda_egress_rules = [
   {

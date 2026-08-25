@@ -4,14 +4,14 @@ resource "aws_instance" "public" {
   subnet_id                   = module.vpc.public_subnet_ids["public-1"]
   vpc_security_group_ids      = [aws_security_group.public_ec2_sg.id]
   associate_public_ip_address = true
-  key_name                    = "Marutikey"
+  key_name                    = "Linux"
   iam_instance_profile        = aws_iam_instance_profile.test_profile.name
 
   connection {
     type        = "ssh"
     user        = "ubuntu"
     host        = self.public_ip
-    private_key = file("/Users/sonu/Downloads/Marutikey.pem")
+    private_key = file("/Users/sonunegi/Downloads/Linux.pem")
   }
 
   provisioner "remote-exec" {
@@ -43,11 +43,11 @@ resource "aws_instance" "private" {
     type                = "ssh"
     user                = "ubuntu"
     host                = self.private_ip
-    private_key         = file("/Users/sonu/Downloads/Marutikey.pem")
+    private_key         = file("/Users/sonunegi/Downloads/Linux.pem")
 
     bastion_host        = aws_instance.public.public_ip
     bastion_user        = "ubuntu"
-    bastion_private_key = file("/Users/sonu/Downloads/Marutikey.pem")
+    bastion_private_key = file("/Users/sonunegi/Downloads/Linux.pem")
   }
 
   provisioner "remote-exec" {
