@@ -19,7 +19,7 @@ jobs:
        uses: hashicorp/setup-terraform@v3
      - name: Tf init
        run: terraform init
-     - name: Tf validate
+     - name: Tf validate the code
        run: terraform validate
      - name: Tf plan
        run: terraform plan
