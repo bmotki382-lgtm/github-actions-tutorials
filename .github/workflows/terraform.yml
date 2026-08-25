@@ -31,4 +31,6 @@ jobs:
      - name: Tf validate the code
        run: terraform validate
      - name: Tf plan
-       run: terraform plan
+       run: |
+        terraform workspace dev
+        terraform plan -var-file="env/dev.tfvars"
