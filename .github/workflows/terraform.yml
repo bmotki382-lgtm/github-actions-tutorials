@@ -3,6 +3,10 @@ on:
   pull_request:
     branches:
       - main
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   terraform:
     name: Tf plan
@@ -13,13 +17,17 @@ jobs:
       working-directory: ./infra/startbust-app/
     
     steps:
-     - name: checkout
-       uses: actions/checkout@v4
+     - name: Setup Node
+       uses: actions/setup-node@v5
+       with:
+          node-version: 24
+     - name: checkout code
+       uses: actions/checkout@v5
      - name: setup terraform
        uses: hashicorp/setup-terraform@v3
      - name: Tf init
        run: terraform init
-     - name: Tf validate
+     - name: Tf validate the code
        run: terraform validate
      - name: Tf plan
        run: terraform plan
