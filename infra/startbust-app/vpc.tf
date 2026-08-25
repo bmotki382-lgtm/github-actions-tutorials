@@ -1,6 +1,6 @@
 module "vpc" {
 
-  source = "../startbust-module/VPC"
+  source = "../starbust-module/VPC"
 
   region   = var.region
   vpc_name = "${var.env}-vpc"
