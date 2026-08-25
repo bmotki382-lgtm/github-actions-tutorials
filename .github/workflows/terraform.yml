@@ -3,6 +3,10 @@ on:
   pull_request:
     branches:
       - main
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  
 jobs:
   terraform:
     name: Tf plan
@@ -14,9 +18,9 @@ jobs:
     
     steps:
      - name: checkout code
-       uses: actions/checkout@v4
+       uses: actions/checkout@v5
      - name: setup terraform
-       uses: hashicorp/setup-terraform@v5
+       uses: hashicorp/setup-terraform@v3
      - name: Tf init
        run: terraform init
      - name: Tf validate the code
