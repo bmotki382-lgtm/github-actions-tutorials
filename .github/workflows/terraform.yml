@@ -1,0 +1,25 @@
+name: terraform
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  terraform:
+    name: Tf plan
+    runs-on: self-hosted
+
+    defaults:
+     run:
+      working-directory: ./infra/startbust-app/
+    
+    steps:
+     - name: checkout
+       uses: actions/checkout@v4
+     - name: setup terraform
+       uses: hashicorp/setup-terraform@v3
+     - name: Tf init
+       run: terraform init
+     - name: Tf validate
+       run: terraform validate
+     - name: Tf plan
+       run: terraform plan
